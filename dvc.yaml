@@ -1,0 +1,15 @@
+stages:
+  prepare:
+    cmd: python src\prepare.py
+    deps:
+    - data1\wine.csv
+    - src\prepare.py
+    outs:
+    - data1\processed
+  train:
+    cmd: python src\train.py
+    deps:
+    - data1\processed
+    - src\train.py
+    outs:
+    - metrics.json
