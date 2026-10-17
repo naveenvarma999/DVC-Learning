@@ -1,15 +1,22 @@
 stages:
   prepare:
-    cmd: python src\prepare.py
+    cmd: python src/prepare.py
     deps:
-    - data1\wine.csv
-    - src\prepare.py
+    - data1/wine.csv
+    - src/prepare.py
+    params:
+    - prepare.test_size
+    - prepare.quality_threshold
     outs:
-    - data1\processed
+    - data1/processed
   train:
-    cmd: python src\train.py
+    cmd: python src/train.py
     deps:
-    - data1\processed
-    - src\train.py
-    outs:
-    - metrics.json
+    - data1/processed
+    - src/train.py
+    params:
+    - train.n_estimators
+    - train.max_depth
+    metrics:
+    - metrics.json:
+        cache: false

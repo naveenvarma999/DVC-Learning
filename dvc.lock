@@ -1,36 +1,44 @@
 schema: '2.0'
 stages:
   prepare:
-    cmd: python src\prepare.py
+    cmd: python src/prepare.py
     deps:
-    - path: data1\wine.csv
+    - path: data1/wine.csv
       hash: md5
       md5: 6a464074fbdfb59bc77bc848f23924b9
       size: 85746
-    - path: src\prepare.py
+    - path: src/prepare.py
       hash: md5
-      md5: c1e508fd119827f9cd755d5eedfef370
-      size: 496
+      md5: 98120d3cb2942509ac5b656133068660
+      size: 628
+    params:
+      params.yaml:
+        prepare.quality_threshold: 6
+        prepare.test_size: 0.2
     outs:
-    - path: data1\processed
+    - path: data1/processed
       hash: md5
       md5: d9c4ba845eddcc2d8e2b29c4ee2d113e.dir
       size: 93712
       nfiles: 2
   train:
-    cmd: python src\train.py
+    cmd: python src/train.py
     deps:
-    - path: data1\processed
+    - path: data1/processed
       hash: md5
       md5: d9c4ba845eddcc2d8e2b29c4ee2d113e.dir
       size: 93712
       nfiles: 2
-    - path: src\train.py
+    - path: src/train.py
       hash: md5
-      md5: 6ce9dc97770a8b1d3dfe44867de0f4be
-      size: 631
+      md5: 6db8fd51184340df61c313e0386634c5
+      size: 955
+    params:
+      params.yaml:
+        train.max_depth: 10
+        train.n_estimators: 50
     outs:
     - path: metrics.json
       hash: md5
-      md5: fe7d35e9db2752cf24e013bf8c784951
-      size: 20
+      md5: 2bd808f29f475ce4772811b16900055b
+      size: 68
