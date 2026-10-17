@@ -36,9 +36,9 @@ stages:
     params:
       params.yaml:
         train.max_depth: 10
-        train.n_estimators: 50
+        train.n_estimators: 200
     outs:
     - path: metrics.json
       hash: md5
-      md5: 2bd808f29f475ce4772811b16900055b
+      md5: 53aa9df5e907923f665b48919482e114
       size: 68

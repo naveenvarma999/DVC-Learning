@@ -3,5 +3,5 @@ prepare:
   quality_threshold: 6
 
 train:
-  n_estimators: 50
+  n_estimators: 200
   max_depth: 10
